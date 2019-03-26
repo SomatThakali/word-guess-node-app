@@ -1,0 +1,24 @@
+{
+  "name": "word-guess-node-app",
+  "version": "1.0.0",
+  "description": "Word Guess Command Line Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SomatThakali/word-guess-node-app.git"
+  },
+  "keywords": [],
+  "author": "Somat Thakali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SomatThakali/word-guess-node-app/issues"
+  },
+  "homepage": "https://github.com/SomatThakali/word-guess-node-app#readme",
+  "dependencies": {
+    "colors": "^1.3.3",
+    "inquirer": "^6.2.2"
+  }
+}
