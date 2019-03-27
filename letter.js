@@ -15,11 +15,11 @@ function Letter(letter) {
  * if the letter has been guessed, or a placeholder
  * (like an underscore) if the letter has not been guessed
  */
-Letter.prototype.getChar = () => {
+Letter.prototype.getChar = function() {
   if (this.letter === " ") {
     return " ";
   } else if (!this.wasGuessed) {
-    return "_";
+    return "_ ";
   } else {
     return this.letter;
   }
@@ -29,10 +29,10 @@ Letter.prototype.getChar = () => {
  * This function checks user guess against the underlying character
  * @param {string} userGuess
  */
-Letter.prototype.checkUserGuess = userGuess => {
+Letter.prototype.checkLetterGuess = function(userGuess) {
   if (userGuess === this.letter) {
     this.wasGuessed = true;
   }
 };
 
-module.exports = { Letter };
+module.exports = Letter;
