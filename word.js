@@ -7,7 +7,7 @@ function Word(wordStr) {
 }
 
 /**
- * @returns {string} will return a string representing a word
+ * @returns {string} a string representing a word
  */
 Word.prototype.getLetters = function() {
   console.log(this.letterArr);

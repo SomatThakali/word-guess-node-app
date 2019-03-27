@@ -1,0 +1,32 @@
+/*  A random word will be selected from this array */
+
+exports.possibleWords = [
+  "API",
+  "algorithm",
+  "array",
+  "arrow functions",
+  "anonymous function",
+  "binary",
+  "byte",
+  "client",
+  "class",
+  "constructor",
+  "callback",
+  "database",
+  "declarations",
+  "domain",
+  "dynamic",
+  "expression",
+  "function",
+  "hyperlink",
+  "iteration",
+  "JSON",
+  "methods",
+  "objects",
+  "promise",
+  "parameters",
+  "prototype",
+  "recursion",
+  "statement",
+  "variable"
+];
