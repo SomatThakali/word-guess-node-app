@@ -10,11 +10,11 @@ function Word(wordStr) {
  * @returns {string} a string representing a word
  */
 Word.prototype.getLetters = function() {
-  console.log(this.letterArr);
+  this.word = "";
   this.letterArr.forEach(letter => {
     this.word += letter.getChar();
   });
-  // console.log("this.word", this.word);
+  // console.log(this.word);
   return this.word;
 };
 
@@ -22,7 +22,7 @@ Word.prototype.getLetters = function() {
  * This function will checks the user guess
  * @param {string} userLetterGuess
  */
-Word.prototype.checkUserGuess = function(userLetterGuess) {
+Word.prototype.updateWordWithUserGuess = function(userLetterGuess) {
   this.letterArr.forEach(letter => {
     letter.checkLetterGuess(userLetterGuess);
   });
@@ -31,9 +31,11 @@ Word.prototype.checkUserGuess = function(userLetterGuess) {
 /**
  * Testing
  */
-const newWord = new Word("word");
-newWord.checkUserGuess("w");
-newWord.checkUserGuess("o");
-newWord.getLetters();
+// const newWord = new Word("woord");
+// newWord.updateWordWithUserGuess("a");
+// newWord.updateWordWithUserGuess("o");
+// newWord.updateWordWithUserGuess("p");
+// newWord.updateWordWithUserGuess("i");
+// newWord.getLetters();
 
 module.exports = Word;
