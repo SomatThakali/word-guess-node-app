@@ -3,28 +3,30 @@ const secretWords = require("./library");
 let inquirer = require("inquirer");
 const colors = require("colors");
 
-let guessesLeft = 5;
+/** Game varibales */
+let guessesLeft = 9;
 let words = secretWords.possibleWords;
 let randomWord = words[Math.floor(Math.random() * words.length)];
 let currentWord = new Word(randomWord);
-console.log("current word is ", currentWord);
+
+/** An array to store all the guessed letters */
 let guessedLettersArr = [];
-let gameMessage = ["Correct!!!", "Incorrect!!!", "Already Guessed!!!"];
+
+/** Game Message Array*/
+let gameMessage = [
+  `\nCorrect!!!`,
+  `\nIncorrect!!!`,
+  `\nAlready Guessed!!!`,
+  `\nYes you got it!! The word is ${randomWord.toUpperCase()}\n`,
+  `\nYou lost the game. Please try again later.\nThe secret word was ${
+    randomWord.toUpperCase().red.bold
+  }\n`,
+  `Thank you for playing. See you later!!!`
+];
 
 console.log(
-  "\n---------------------------------\nHow well do you know programming?\n---------------------------------"
+  "\n-------------------------------------\nHow well do you know the programming?\n-------------------------------------"
 );
-
-initGame();
-
-function initGame() {
-  console.log(currentWord.getLetters());
-  if (guessesLeft > 0) {
-    promtGuessWord();
-  } else {
-    console.log("You lost the game. Please try again later");
-  }
-}
 
 function promtGuessWord() {
   inquirer
@@ -66,12 +68,59 @@ function guessLetters(letter) {
     } else {
       guessesLeft--;
       console.log(`${gameMessage[1].bold.red}\n`);
-      console.log(`${guessesLeft} guesses remaining\n`);
+      console.log(`${guessesLeft} guess remaining!!! \n`);
     }
     currentWord.updateWordWithUserGuess(letter);
   }
 }
 
+initGame();
+
+function initGame() {
+  let word = currentWord.getLetters();
+  console.log(word);
+  if (word.indexOf("_") === -1) {
+    console.log(gameMessage[3].bold.green);
+    playGame();
+  } else if (guessesLeft > 0) {
+    promtGuessWord();
+  } else {
+    console.log(gameMessage[4].bold.green);
+    playGame();
+  }
+}
+
+/** This function will promt the user to play the game again */
+function playGame() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "play",
+        message:
+          "Enter y or Y to play the game again and any key to terminate the game",
+        validate: function(value) {
+          if (isNaN(value) === true && isAlpha(value) === true) {
+            return true;
+          }
+
+          return false;
+        }
+      }
+    ])
+    .then(answers => {
+      guessesLeft = 8;
+      words = secretWords.possibleWords;
+      randomWord = words[Math.floor(Math.random() * words.length)];
+      currentWord = new Word(randomWord);
+      guessedLettersArr = [];
+      if (answers.play === "y" || answers.play === "Y") {
+        initGame();
+      } else {
+        console.log(gameMessage[5].red.bold);
+      }
+    });
+}
 /**
  *
  * @param {char} char will return alphabets

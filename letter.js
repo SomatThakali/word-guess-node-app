@@ -19,7 +19,7 @@ Letter.prototype.getChar = function() {
   if (this.letter === " ") {
     return " ";
   } else if (!this.wasGuessed) {
-    return "_ ";
+    return "_  ";
   } else {
     return this.letter;
   }

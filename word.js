@@ -28,14 +28,4 @@ Word.prototype.updateWordWithUserGuess = function(userLetterGuess) {
   });
 };
 
-/**
- * Testing
- */
-// const newWord = new Word("woord");
-// newWord.updateWordWithUserGuess("a");
-// newWord.updateWordWithUserGuess("o");
-// newWord.updateWordWithUserGuess("p");
-// newWord.updateWordWithUserGuess("i");
-// newWord.getLetters();
-
 module.exports = Word;

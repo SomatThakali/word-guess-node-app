@@ -1,7 +1,7 @@
 /*  A random word will be selected from this array */
 
 exports.possibleWords = [
-  "API",
+  "api",
   "algorithm",
   "array",
   "arrow functions",
@@ -20,7 +20,7 @@ exports.possibleWords = [
   "function",
   "hyperlink",
   "iteration",
-  "JSON",
+  "json",
   "methods",
   "objects",
   "promise",
