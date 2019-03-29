@@ -12,20 +12,16 @@ let currentWord = new Word(randomWord);
 /** An array to store all the guessed letters */
 let guessedLettersArr = [];
 
-/** Game Message Array*/
-let gameMessage = [
-  `\nCorrect!!!`,
-  `\nIncorrect!!!`,
-  `\nAlready Guessed!!!`,
-  `\nYes you got it!! The word is ${randomWord.toUpperCase()}\n`,
-  `\nYou lost the game. Please try again later.\nThe secret word was ${
-    randomWord.toUpperCase().red.bold
-  }\n`,
-  `Thank you for playing. See you later!!!`
-];
+/** Game Message */
+let message;
+gameMessage();
 
+/** Welcome message*/
+let welcomeMessage = `Welcome! Let's see how well do you know the programming?`;
 console.log(
-  "\n-------------------------------------\nHow well do you know the programming?\n-------------------------------------"
+  `\n-------------------------------------------------------\n${
+    welcomeMessage.bold.green
+  }\n-------------------------------------------------------`
 );
 
 function promtGuessWord() {
@@ -59,15 +55,18 @@ function guessLetters(letter) {
     if (guessedLettersArr.indexOf(letter) === -1) {
       guessedLettersArr.push(letter);
     } else {
-      console.log(`${gameMessage[2].bold.red}\n`);
+      /** gameMessage === already Guessed!!! */
+      console.log(`${gameMessage(gameMessage)[2].bold.red}\n`);
       return;
     }
 
     if (randomWord.indexOf(letter) > -1) {
-      console.log(`${gameMessage[0].bold.green}\n`);
+      /** gameMessage === Correct!!! */
+      console.log(`${gameMessage(gameMessage)[0].bold.green}\n`);
     } else {
       guessesLeft--;
-      console.log(`${gameMessage[1].bold.red}\n`);
+      /** gameMessage === INCORRECT!!! */
+      console.log(`${gameMessage(message)[1].bold.red}\n`);
       console.log(`${guessesLeft} guess remaining!!! \n`);
     }
     currentWord.updateWordWithUserGuess(letter);
@@ -80,12 +79,14 @@ function initGame() {
   let word = currentWord.getLetters();
   console.log(word);
   if (word.indexOf("_") === -1) {
-    console.log(gameMessage[3].bold.green);
+    /** gameMessage === Yes you got it and displays the random Word ! */
+    console.log(gameMessage(gameMessage)[3].bold.green);
     playGame();
   } else if (guessesLeft > 0) {
     promtGuessWord();
   } else {
-    console.log(gameMessage[4].bold.green);
+    /** gameMessage === You lost the game and displays the random Word */
+    console.log(gameMessage(gameMessage)[4].bold.red);
     playGame();
   }
 }
@@ -114,10 +115,12 @@ function playGame() {
       randomWord = words[Math.floor(Math.random() * words.length)];
       currentWord = new Word(randomWord);
       guessedLettersArr = [];
+      gameMessage();
       if (answers.play === "y" || answers.play === "Y") {
         initGame();
       } else {
-        console.log(gameMessage[5].red.bold);
+        /** gameMessage === Thank You for playing!!! */
+        console.log(gameMessage(gameMessage)[5].bold.green);
       }
     });
 }
@@ -128,3 +131,18 @@ function playGame() {
 var isAlpha = function(char) {
   return /^[A-Z]$/i.test(char);
 };
+
+/** This function will retrun an array of game Message */
+function gameMessage() {
+  message = [
+    `\nCorrect!!!`,
+    `\nIncorrect!!!`,
+    `\nAlready Guessed!!!`,
+    `\nYes you got it!! The word is ${randomWord.toUpperCase()}\n`,
+    `\nYou lost the game. Please try again later.\nThe secret word was ${
+      randomWord.toUpperCase().bold.green
+    }\n`,
+    `Thank you for playing. See you later!!!`
+  ];
+  return message;
+}
