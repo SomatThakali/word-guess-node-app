@@ -23,7 +23,7 @@ Make sure you have the necessary dependencies:
 
 ## Running the Tests
 
-### 1. In your teminal/bash window run: \*\*node index.js
+### 1. In your teminal/bash window run: node index.js
 
 ![Screen Shot 2019-03-29 at 4 13 00 PM](https://user-images.githubusercontent.com/36021076/55260269-52ac8a00-523e-11e9-8582-94c54cfaab3d.png)
 ![Screen Shot 2019-03-29 at 4 13 41 PM](https://user-images.githubusercontent.com/36021076/55260282-5b04c500-523e-11e9-8137-aa30d0f008da.png)
