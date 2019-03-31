@@ -6,7 +6,7 @@ word-guess-node-app is a hangman game to be played from the command line.
 
 Clone a copy of the word-guess-node-app repo by running:
 
-git@github.com:SomatThakali/word-guess-node-app.git
+`git clone git@github.com:SomatThakali/word-guess-node-app.git`
 
 ## Installations
 
@@ -18,8 +18,7 @@ OS X users should install Homebrew. Once Homebrew is installed, run brew install
 
 Make sure you have the necessary dependencies:
 
-1. npm i inquirer
-2. npm i colors
+In your command run: npm install
 
 ## Running the Tests
 
