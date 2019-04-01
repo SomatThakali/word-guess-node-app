@@ -119,7 +119,7 @@ function playGame() {
         initGame();
       } else {
         /** gameMessage === Thank You for playing!!! */
-        console.log(gameMessage(gameMessage)[5].bold.green);
+        console.log(gameMessage()[5].bold.green);
       }
     });
 }
